@@ -175,10 +175,10 @@ body * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   /* repères */
-  /*border: 1px solid black;
+  border: 1px solid black;
 	background: rgba(0,0,0,.2);
 	padding-top: 5px;
-	padding-bottom: 5px;*/
+	padding-bottom: 5px;
   /* repères */
   margin: 0;
   border: 0;
@@ -189,7 +189,6 @@ body * {
 body,
 noscript {
   height: 100vh;
-  display: flex;
 }
 
 noscript {
