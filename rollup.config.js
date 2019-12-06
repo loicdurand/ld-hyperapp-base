@@ -1,7 +1,7 @@
 import babel from "rollup-plugin-babel"
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
-import uglify from 'rollup-plugin-uglify'
+import { uglify } from 'rollup-plugin-uglify'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import sass from 'rollup-plugin-sass'
@@ -14,35 +14,48 @@ const dev = !!process.env.ROLLUP_WATCH
 export default {
   input: 'src/index.js',
   output: {
-    file: 'build/build.min.js',
+    file: 'dist/build.min.js',
     sourcemap: dev ? 'inline' : false,
     format: 'iife',
   },
   plugins: [
     sass({
-       insert: true
+      insert: true
     }),
     copy({
       targets: [
-        { src: 'src/assets/*', dest: 'build/' }
+        { src: 'src/index.html', dest: 'dist/' },
+        { src: 'src/assets/*', dest: 'dist/' }
       ]
     }),
     iniparser({
       include: "src/*.ini",
     }),
-    resolve({ jsnext: true,
-              browser: true, }),
+    resolve({
+      jsnext: true,
+      browser: true,
+    }),
     commonjs({
       exclude: 'src/**',
     }),
     babel({
-      exclude: 'node_modules/**',
+      babelrc: false,
+      presets: [['env', { modules: false }]],
+      plugins: [
+        [
+          "transform-react-jsx",
+          {
+            "pragma": "h"
+          },
+          "external-helpers"
+        ]
+      ]
     }),
     prod && uglify(),
-    dev && livereload('build'),
+    dev && livereload('dist'),
     dev &&
     serve({
-      contentBase: ['build'],
+      contentBase: ['dist'],
       historyApiFallback: true,
       port: 8090,
     }),
