@@ -9,15 +9,17 @@ export const App = () => (state, actions) =>
 
     <div>
 
-        <HelloWorld message="[components/helloworld] - specified in the SCSS file - I must be red and bordered" />
+        <HelloWorld message='<HelloWorld message="..." />' />
 
         <br />
 
-        <Link to="/page"> Click </Link>
+        <h3>[ config.INI ]: "{config.App.testStr}"</h3>
 
         <br />
 
-        <h3>test: "{config.App.testStr}"</h3>
+        <Link to="/page"> @Hyperapp-router Link component </Link>
+
+        <br />
 
 
     </div>

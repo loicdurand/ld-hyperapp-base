@@ -14,7 +14,7 @@ const dev = !!process.env.ROLLUP_WATCH
 export default {
   input: 'src/index.js',
   output: {
-    file: 'dist/build.min.js',
+    file: 'dist/index.min.js',
     sourcemap: dev ? 'inline' : false,
     format: 'iife',
   },
