@@ -6,6 +6,7 @@ import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import sass from 'rollup-plugin-sass'
 import copy from 'rollup-plugin-copy'
+import { iniparser } from "rollup-plugin-iniparser";
 
 const prod = !process.env.ROLLUP_WATCH
 const dev = !!process.env.ROLLUP_WATCH
@@ -25,6 +26,9 @@ export default {
       targets: [
         { src: 'src/assets/*', dest: 'build/' }
       ]
+    }),
+    iniparser({
+      include: "src/*.ini",
     }),
     resolve({ jsnext: true,
               browser: true, }),

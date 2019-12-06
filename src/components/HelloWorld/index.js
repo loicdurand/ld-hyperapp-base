@@ -29,6 +29,4 @@ export const HelloWorld = ({ message }) =>
 
         <br />
 
-        <Link to="/page"> Click </Link>
-
     </Ctnr>
