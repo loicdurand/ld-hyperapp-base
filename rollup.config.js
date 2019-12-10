@@ -1,24 +1,17 @@
-import babel from "rollup-plugin-babel"
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
-import { uglify } from 'rollup-plugin-uglify'
-import serve from 'rollup-plugin-serve'
-import livereload from 'rollup-plugin-livereload'
-import sass from 'rollup-plugin-sass'
-import copy from 'rollup-plugin-copy'
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import { uglify } from 'rollup-plugin-uglify';
+import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload';
+import sass from 'rollup-plugin-sass';
+import copy from 'rollup-plugin-copy';
 import { iniparser } from "rollup-plugin-iniparser";
 
-const prod = !process.env.ROLLUP_WATCH
-const dev = !!process.env.ROLLUP_WATCH
-
-export default {
-  input: 'src/index.js',
-  output: {
-    file: 'dist/index.min.js',
-    sourcemap: dev ? 'inline' : false,
-    format: 'iife',
-  },
-  plugins: [
+const // 
+  prod = !process.env.ROLLUP_WATCH,
+  dev = !!process.env.ROLLUP_WATCH,
+  plugins = [
     sass({
       insert: true
     }),
@@ -41,6 +34,7 @@ export default {
       babelrc: false,
       presets: [['env', { modules: false }]],
       plugins: [
+        ["transform-object-rest-spread"],
         [
           "transform-react-jsx",
           {
@@ -56,7 +50,18 @@ export default {
     serve({
       contentBase: ['dist'],
       historyApiFallback: true,
-      port: 8091,
+      port: 8090,
     }),
-  ],
-}
+  ];
+
+export default [
+  {
+    input: 'src/index.js',
+    output: {
+      file: 'dist/index.min.js',
+      sourcemap: dev ? 'inline' : false,
+      format: 'iife',
+    },
+    plugins: plugins
+  }
+];
