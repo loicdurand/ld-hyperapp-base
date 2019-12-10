@@ -10,6 +10,7 @@
     "start": "rollup -c -w"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^6.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -23,9 +24,8 @@
     "rollup-plugin-copy": "^3.1.0",
     "rollup-plugin-iniparser": "github:loicdurand/rollup-plugin-iniparser",
     "rollup-plugin-livereload": "^1.0.4",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sass": "^1.2.2",
-    "rollup-plugin-serve": "^0.4.2",
+    "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-uglify": "^6.0.3"
   },
   "dependencies": {
